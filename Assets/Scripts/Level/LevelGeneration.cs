@@ -15,6 +15,9 @@ public class LevelGeneration : MonoBehaviour
     [SerializeField]
     private GameObject PlatformPrefab;
 
+    [SerializeField]
+    private static float CurrentSpeed = 1f;
+
     private void Start()
     {
         while (LatestPlatform.transform.position.x < SpawnLocation.x)
@@ -29,5 +32,10 @@ public class LevelGeneration : MonoBehaviour
         {
             LatestPlatform = Instantiate(PlatformPrefab, SpawnLocation, Quaternion.identity);
         }
+    }
+
+    public static float GetCurrentSpeed()
+    {
+        return CurrentSpeed;
     }
 }

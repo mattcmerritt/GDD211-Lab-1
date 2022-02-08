@@ -5,9 +5,14 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
     [SerializeField]
-    private float Speed;
+    private float Speed, InitialSpeed;
     [SerializeField]
     private float MinPosition;
+
+    private void Awake()
+    {
+        InitialSpeed = Speed;
+    }
 
     private void Update()
     {
@@ -17,5 +22,15 @@ public class Platform : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void StopMoving()
+    {
+        Speed = 0f;
+    }
+
+    public void StartMoving()
+    {
+        Speed = InitialSpeed;
     }
 }
